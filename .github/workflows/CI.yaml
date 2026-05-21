@@ -18,6 +18,7 @@ jobs:
         run: make build
 
       - name: Clean
+        if: always()
         run: make clean
 
   test:
@@ -33,4 +34,5 @@ jobs:
           make test
 
       - name: Clean
+        if: always()
         run: make clean
