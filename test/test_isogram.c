@@ -62,6 +62,5 @@ int main(void) {
   RUN_TEST(test_alnum_non_isogram);
   RUN_TEST(test_nullptr);
 
-  UnityEnd();
-  return 0;
+  return UnityEnd();
 }
