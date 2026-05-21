@@ -5,22 +5,27 @@
 #include <stdio.h>
 
 
-bool seen[256] = {false};
-
-bool is_isogram(const char word[]){
-  if (word == NULL) {
-    return true; // Consider NULL as an isogram
-  }
-
-  for (size_t i = 0; word[i] != '\0'; i++) {
-    char c = word[i];
-    if (c >= 'A' && c <= 'Z') {
-      c += 32; // Convert to lowercase
+bool is_isogram(const char word[])
+{
+    if (word == NULL) {
+        return false;
     }
-    if (seen[(unsigned char)c]) {
-      return false; // Character has been seen before
+
+    bool seen[256] = { false };
+
+    for (size_t i = 0; word[i] != '\0'; i++) {
+        unsigned char c = (unsigned char)word[i];
+
+        if (c >= 'A' && c <= 'Z') {
+            c = (unsigned char)(c + 32);
+        }
+
+        if (seen[c]) {
+            return false;
+        }
+
+        seen[c] = true;
     }
-    seen[(unsigned char)c] = true; // Mark character as seen
-  }
-  return true; // All characters are unique
+
+    return true;
 }
